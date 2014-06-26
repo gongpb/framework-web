@@ -10,5 +10,6 @@
   <module>spring-aop</module>
   <module>myIbatis-test</module>
   <module>struts2-web</module>
+  <module>struts1-web</module>
   </modules>
 </project>

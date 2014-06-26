@@ -5,15 +5,14 @@
     <artifactId>framework</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>struts2-web</artifactId>
+  <artifactId>struts1-web</artifactId>
   <packaging>war</packaging>
   
   <dependencies>
-	
 		<dependency>
-			<groupId>org.apache.struts</groupId>
-			<artifactId>struts2-core</artifactId>
-			<version>2.3.1.2</version>
+			<groupId>struts</groupId>
+			<artifactId>struts</artifactId>
+			<version>1.2.9</version>
 		</dependency>
 		
 		<dependency>
