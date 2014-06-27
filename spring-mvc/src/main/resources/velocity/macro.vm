@@ -1,0 +1,20 @@
+#macro(createTabPanel $tabs)
+<div class="panel panel-default">
+	<div class="panel-body">
+    	<ul class="nav nav-tabs">
+		#foreach($tab in $tabs)
+			<li id="${tab.key}Title" class="#if($velocityCount == 1) active #end tab-title" onclick="location.href='${active}.do?selected=${tab.key}'">
+				<a data-toggle="tab" href="#${tab.key}Pane">${tab.title}</a>
+			</li>
+		#end
+    	</ul>
+        <div class="tab-content">
+		#foreach($tab in $tabs)
+            <div id="${tab.key}Pane" class="tab-pane fade #if($velocityCount == 1) active in #end">
+				#parse("${active}/${tab.key}.vm")
+			</div>
+		#end
+    	</div>
+    </div>
+</div>
+#end
