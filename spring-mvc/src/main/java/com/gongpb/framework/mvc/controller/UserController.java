@@ -15,6 +15,6 @@ public class UserController {
 		if("admin".equals(user.getUserName()) && "admin".equals(user.getPassword())){
 			System.out.println("---------登录成功----------");
 		}
-		return new ModelAndView("user/index");
+		return new ModelAndView("user/index.vm");
 	}
 }

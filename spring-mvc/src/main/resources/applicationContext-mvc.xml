@@ -23,7 +23,7 @@
 	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
 	
 	<!-- ########################################################### -->
-	<!-- 自定义视图解析器(其实是视图中转器)中，通过对视图文件的后缀判断(而不是请求地址的后缀)而返回给不同的视图解析器处理 
+	<!-- 自定义视图解析器(其实是视图中转器)中，通过对视图文件的后缀判断(而不是请求地址的后缀)而返回给不同的视图解析器处理  	 -->
 	<bean id="viewResolver" class="com.gongpb.framework.mvc.view.DevViewResolver">
         <property name="defaultViewResolver" ref="beanNameViewResolver"/>
         <property name="viewResolverMap">
@@ -49,15 +49,20 @@
         </property>
     </bean>
     <bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
-	 -->
-	<!-- ########################################################### -->
 
-	
+	<!-- ########################################################### -->
+  <!-- 	<bean class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+        <property name="basename" value="views"></property>
+       
+            <property name="order" value="0"></property>
+       
+    </bean>
+	 -->
 	<!--  jsp环境配置   start -->  
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
        <property name="prefix" value="/WEB-INF/jsp/" />  
-       <property name="suffix" value=".jsp" />  
-       <property name="order" value="1"/>
+       <!-- <property name="suffix" value=".jsp" />  
+       <property name="order" value="1"/>  -->
     </bean>
     <!-- jsp环境配置  jsp end -->  
     
@@ -83,7 +88,7 @@
 	<bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
 		<property name="cache" value="false" /><!--是否缓存模板-->
 		<property name="prefix" value="/WEB-INF/velocity/" />
-		<property name="suffix" value=".vm" />
+		<!-- <property name="suffix" value=".vm" /> -->
 		<property name="contentType" value="text/html;charset=UTF-8" />
 		<property name="exposeSpringMacroHelpers" value="true" /><!--是否使用spring对宏定义的支持-->         
 		<property name="exposeRequestAttributes" value="true" /><!--是否开放request属性-->
