@@ -7,13 +7,13 @@
 		<link  type="text/css" rel="stylesheet" media="screen" href="css/bootstrap.css"/>
 	</head>
 	<body>
-		<div class="container" style="width: 300px; height: 400px">
-			<form class="form-signin" method="post" action="login">
+		<div class="container" style="width: 300px; height:700px;">
+			<form class="form-signin" method="post" action="user/login.do">
 				<h2 class="form-signin-heading">Login</h2>
 				<span id="errorMessage" style="color: red"></span>
-				<input name="j_username" class="form-control" type="text" placeholder="输入用户名" />
+				<input name="userName" class="form-control" type="text" placeholder="输入用户名" />
 				<label></label>
-				<input name="j_password" class="form-control" type="password"  placeholder="输入密码" />
+				<input name="password" class="form-control" type="password"  placeholder="输入密码" />
 				<label class="checkbox"><input type="checkbox" value="remember-me" />Remember Me</label>
 				<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
 			</form>
