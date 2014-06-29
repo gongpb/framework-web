@@ -12,6 +12,6 @@ public class IndexController {
 	@RequestMapping("/index.do")
 	public String index() {
 		logger.info("---登录login----");
-		return "login.jsp";
+		return "login";
 	}
 }
