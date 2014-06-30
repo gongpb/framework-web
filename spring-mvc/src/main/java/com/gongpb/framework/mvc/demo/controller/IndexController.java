@@ -1,4 +1,4 @@
-package com.gongpb.framework.mvc.controller;
+package com.gongpb.framework.mvc.demo.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +12,6 @@ public class IndexController {
 	@RequestMapping("/index.do")
 	public String index() {
 		logger.info("---登录login----");
-		return "login";
+		return "login.jsp";
 	}
 }

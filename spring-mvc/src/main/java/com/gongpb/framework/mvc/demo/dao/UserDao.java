@@ -1,4 +1,4 @@
-package com.gongpb.framework.mvc.dao;
+package com.gongpb.framework.mvc.demo.dao;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

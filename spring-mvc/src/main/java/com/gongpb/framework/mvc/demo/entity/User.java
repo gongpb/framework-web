@@ -1,4 +1,4 @@
-package com.gongpb.framework.mvc.entity;
+package com.gongpb.framework.mvc.demo.entity;
 
 public class User {
 	private String userName;

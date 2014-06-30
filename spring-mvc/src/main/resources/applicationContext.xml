@@ -33,5 +33,5 @@
 	<!-- 任务调度 -->
 	<import resource="applicationContext-scheduler.xml" />
 	<import resource="applicationContext-security.xml" />
-	
+	<import resource="applicationContext-schemas-test.xml" />
 </beans>

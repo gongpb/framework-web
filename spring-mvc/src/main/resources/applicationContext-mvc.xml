@@ -22,11 +22,41 @@
 	
 	<bean id="requestMappingHandlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
 	<bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+	<!-- ########################################################### -->
+	<!-- 自定义多视图配置  start -->
+	<bean id="viewResolver" class="com.gongpb.framework.mvc.view.DevViewResolver">
+        <property name="defaultViewResolver" ref="beanNameViewResolver"/>
+        <property name="viewResolverMap">
+            <map>
+                <entry>
+                    <key>
+                        <set>
+                            <value>.jsp</value>
+                        </set>
+                    </key>
+                    <ref bean="jspViewResolver"/>
+                </entry>
+                <entry>
+                    <key>
+                        <set>
+                            <value>.vm</value>
+                            <value>.htm</value>
+                        </set>
+                    </key>
+                    <ref bean="velocityViewResolver"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    <bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+	<!-- 自定义多视图配置  end -->
+	<!-- ########################################################### -->
+	
 	
 	<!--  jsp环境配置   start -->  
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">  
        <property name="prefix" value="/WEB-INF/jsp/" />  
-      <property name="suffix" value=".jsp" />  
+       <!--<property name="suffix" value=".jsp" />    -->
        <property name="order" value="1"/>
     </bean>
     <!-- jsp环境配置  jsp end -->  
@@ -50,7 +80,7 @@
 	</bean>
 	<bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
 		<property name="cache" value="false" />
-		<property name="suffix" value=".vm" />
+		<!-- <property name="suffix" value=".vm" /> -->
 		<property name="contentType" value="text/html;charset=UTF-8" />
 		<property name="exposeSpringMacroHelpers" value="true" />
 		<property name="exposeRequestAttributes" value="true" />
@@ -59,12 +89,19 @@
 		<property name="allowRequestOverride" value="true" />
 		<property name="requestContextAttribute" value="rc" />
 		<property name="layoutUrl" value="velocity/master.vm" />
-		 <property name="order" value="0"/>
+		<property name="order" value="0"/>
 	</bean>
 	<!-- velocity环境配置  end -->
 	
 	<!-- ########################################################### -->
 	<mvc:annotation-driven />
 	<!-- 自动搜索@Controller标注的类 -->
-	<context:component-scan base-package="com.gongpb.framework.mvc.controller" />
+	<context:component-scan base-package="com.gongpb.framework.mvc.demo.controller" />
+	
+	<mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/user/login.do" />
+            <bean class="com.gongpb.framework.mvc.interceptor.Testinterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
