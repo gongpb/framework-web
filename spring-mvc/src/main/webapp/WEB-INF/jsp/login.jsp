@@ -19,7 +19,8 @@
 			</form>
 		</div>
 		<div style="width: 100%;" align="center">
-			当前版本: 0.0.1
+			<p>版权所有(2014-2015) @gongpb Sptring测试系统</p>
+			<p>当前版本: 0.0.1</p>		
 		</div>
 	</body>
 </html>
