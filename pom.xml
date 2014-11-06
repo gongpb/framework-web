@@ -11,5 +11,6 @@
   <module>myIbatis-test</module>
   <module>struts2-web</module>
   <module>struts1-web</module>
+  <module>unit-test</module>
   </modules>
 </project>
