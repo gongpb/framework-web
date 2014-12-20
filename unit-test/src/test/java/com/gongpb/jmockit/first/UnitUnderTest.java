@@ -10,8 +10,6 @@ public class UnitUnderTest {
 	OutWork outWork; 
 	//1、表明被修饰实例将会自动注入到@Tested修饰的实例中，并且会自动mock掉，除非在测试前被赋值  
 	//2、通过setter方法手动注入
-	@Injectable   
-	InWork inWork;
     @Test  
     public void test() {  
         new NonStrictExpectations() {  

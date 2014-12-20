@@ -12,5 +12,6 @@
   <module>struts2-web</module>
   <module>struts1-web</module>
   <module>unit-test</module>
+  <module>jackson</module>
   </modules>
 </project>

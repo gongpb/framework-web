@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 /**
  * 使用MockUp修改被测试方法内部逻辑
- * 开放set方法，注入，还有没有其它方方法
  * @author gongpibao
  */
 public class ServiceTest {

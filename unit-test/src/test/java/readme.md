@@ -27,20 +27,21 @@ a)期望录制Expectations和NonStrictExpectations
 调用次数：times=3;
 
 b)根据Expectations块是否有参数，分为非局部模拟与局部模拟
-c)静态方法两种mock方式,demo：com.gongpb.jmockit.util
-d)mock私有方法、私有静态方法、私有属性设置value 方法:
-final ClassMocked obj = new ClassMocked();
-Deencapsulation.invoke(obj, "privateMethod", 1);
-Deencapsulation.setField(obj, "url", "http://youku.com");  
 
-d)基于行为的测试(类似于黑盒)
+c)基于行为的测试(类似于黑盒)
 可以使用jmockit的基于行为的mock方式。在这种方式中，目的是测试单元测试及其依赖代码的调用过程，验证代码逻辑是否满足测试路径。  
 由于被依赖代码可能在自己单测中已测试过，或者难以测试，就需要把这些被依赖代码的逻辑用预定期待的行为替换掉，也就是mock掉，从而把待测是代码隔离开，这也是单元测试的初衷
-e)基于状态的测试(类似于白盒)
+d)基于状态的测试(类似于白盒)
 MockUp修改被测试方法内部逻辑
 对于这种情景，可以使用jmockit基于状态的mock方式。目的是从被测代码的使用角度出发，结合数据的输入输出来检验程序运行的这个正确性。
 使用这个方式，需要把被依赖的代码mock掉，实际上相当于改变了被依赖的代码的逻辑。
 通常在集成测试中，如果有难以调用的外部接口，就通过这个方式mock掉，模拟外部接口
+
+e)静态方法mock方式,demo：com.gongpb.jmockit.util
+d)mock私有方法、私有静态方法、私有属性设置value 方法:
+final ClassMocked obj = new ClassMocked();
+Deencapsulation.invoke(obj, "privateMethod", 1);
+Deencapsulation.setField(obj, "url", "http://youku.com"); 
 
 3、replay阶段：通过调用被测代码，执行测试。期间会invoke 到 第一阶段record的mock对象或方法
 调用真实要测试的方法
@@ -53,15 +54,8 @@ new Verifications() {// 验证预期Mock行为被调用
 			}
 };
 
-5、JMockit元素
-@Tested和@Injectable: 对@Tested对象判断是否为null，是则通过合适构造器初始化，并实现依赖注入。
-调用构造方法时，会尝试使用@Injectable的字段进行构造器注入。普通注入时，@Injectable字段如果没有在测试方法前被赋值，
-其行为将会被mock成默认值(静态方法和构造函数不会被mock掉)。Injectable最大作用除了注入，还有就是mock的范围只限当前注释实例。
-一句话：@Injectable的实例会自动注入到@Tested中，如果没初始赋值，那么JMockit将会以相应规则初始化。
-
-@Mocked:@Mocked修饰的实例，将会把实例对应类的所有实例的所有行为都mock掉（无论构造方法，还是private，protected方法，够霸气吧）。
-在Expectation区块中，声明的成员变量均默认带有@Mocked，但是本例没有省略，是因为@Mocked会mock掉所有方法，
-而回放的代码中doit函数我们是不希望它也被mock，所以通过method="tryIt"来设置被mock的类只对tryIt方法进行mock。
-
+5、
 Expectations:这是录制期望发生行为的地方。result和times都是其内定成员变量。result可以重定义录制行为的返回值甚至通过Delegate来重定义行为，
-times是期待录制行为的发生次数。在Expectations中发生的调用，均会被mock。由于没定义result，所以guessDAO.saveResult()调用的结果返回空
+times是期待录制行为的发生次数。在Expectations中发生的调用，均会被mock。由于没定义result，调用的结果返回空
+
+注意：方法在哪个类中实现，就通过哪个类实现

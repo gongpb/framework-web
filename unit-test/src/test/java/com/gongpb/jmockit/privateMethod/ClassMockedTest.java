@@ -19,7 +19,7 @@ public class ClassMockedTest {
 		final ClassMocked obj = new ClassMocked();  
 	    new NonStrictExpectations(obj) {  
 	        {  
-	        	Deencapsulation.invoke(obj, "privateMethod", 1);//如果私有方法是静态的，可以使用：this.invoke(null, "multiply3")  
+	        	Deencapsulation.invoke(obj, "privateMethod", 1);
 	            result = 200;
 	        }
 	    };
