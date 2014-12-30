@@ -2,7 +2,7 @@ package com.gongpb.jackson.bean;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
-public class User {
+public class UserJackJson {
 	@JsonProperty("ID")
 	private int id;
 	@JsonProperty("NAME")
@@ -10,15 +10,15 @@ public class User {
 	@JsonProperty("EMAIL")
     private String email;
 	@JsonProperty("ADDRESS")
-    private String address;
+    private AddressJackJson address;
 	@JsonProperty("BIRTHDAY")
-    private Birthday birthday;
+    private String birthday;
     
     //getter、setter
     
     @Override
     public String toString() {
-        return this.name + "#" + this.id + "#" + this.address + "#" + this.birthday + "#" + this.email +"#"+birthday.toString();
+        return this.name + "#" + this.id + "#" + this.address + "#" + this.birthday + "#" + this.email;
     }
     
 	public int getId() {
@@ -45,20 +45,22 @@ public class User {
 		this.email = email;
 	}
 
-	public String getAddress() {
+	public AddressJackJson getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(AddressJackJson address) {
 		this.address = address;
 	}
 
-	public Birthday getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Birthday birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
+
+	
 
 }

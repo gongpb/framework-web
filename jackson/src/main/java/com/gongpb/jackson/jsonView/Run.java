@@ -33,6 +33,7 @@ class Run {
 		ObjectWriter writer2 = objectMapper.writerWithView(UserBean.FView.class);
 		String json2 = writer2.writeValueAsString(user);
 		System.out.println("2："+json2);
+//		defaultPrettyPrintingWriter
 		
 		System.out.println("\n");
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();

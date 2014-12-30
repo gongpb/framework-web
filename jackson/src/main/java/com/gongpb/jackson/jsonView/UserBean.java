@@ -1,7 +1,11 @@
 package com.gongpb.jackson.jsonView;
 
+import org.codehaus.jackson.annotate.JsonAutoDetect;
+import org.codehaus.jackson.annotate.JsonMethod;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonView;
+
+@JsonAutoDetect(JsonMethod.FIELD)
 public class UserBean {
 	public interface BaseView {
 	};
@@ -12,11 +16,19 @@ public class UserBean {
 	
 	@JsonProperty("ID")
 	private int id;
+	
 	@JsonProperty("USERNAME")
 	private String username;
+	
 	@JsonProperty("PASSWORD")
 	private String password;
+	
+	@JsonView(FView.class)
+	@JsonProperty("FPROPERTY")
 	private String Fproperty;
+	
+	@JsonView(BView.class)
+	@JsonProperty("BPROPERTY")
 	private String Bproperty;
 
 	public UserBean() {
@@ -42,8 +54,7 @@ public class UserBean {
 	public void setId(int id) {
 		this.id = id;
 	}
-	@JsonView(FView.class)
-	@JsonProperty("FPROPERTY")
+
 	public String getFproperty() {
 		return Fproperty;
 	}
@@ -51,8 +62,7 @@ public class UserBean {
 	public void setFproperty(String fproperty) {
 		Fproperty = fproperty;
 	}
-	@JsonView(BView.class)
-	@JsonProperty("BPROPERTY")
+
 	public String getBproperty() {
 		return Bproperty;
 	}

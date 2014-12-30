@@ -29,12 +29,13 @@ public class Run {
         System.out.println(json1);  
         System.out.println("\n");
 		
-		FilterProvider filtersOut = new SimpleFilterProvider().addFilter(
-		"UserFilter",
-		SimpleBeanPropertyFilter.serializeAllExcept(getFilter(bean)))
-		.addFilter(
-				"BirthdayFilter",
-				SimpleBeanPropertyFilter.serializeAllExcept("ID", "ZODIAC"));
+		FilterProvider filtersOut = new SimpleFilterProvider()
+				.addFilter(
+						"UserFilter",
+				SimpleBeanPropertyFilter.serializeAllExcept(getFilter(bean)))
+				.addFilter(
+						"BirthdayFilter",
+						SimpleBeanPropertyFilter.serializeAllExcept("ID", "ZODIAC"));
 		
 		String json2 = mapper.writer(filtersOut).writeValueAsString(bean);  
         System.out.println(json2);
